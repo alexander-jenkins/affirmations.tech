@@ -43,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://api.affirmations.tech:3001"
+  "proxy": "http://api.affirmations.tech:3001"
 }
