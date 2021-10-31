@@ -14,7 +14,7 @@ const client = require('twilio')(
 // set up the express app
 const app = express();
 app.use(cors());
-const port = process.env.REACT_APP_PORT || 5000;
+const port = process.env.REACT_APP_EXPRESS_PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
