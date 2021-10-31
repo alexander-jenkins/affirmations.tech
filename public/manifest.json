@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Affirmations",
+  "name": "Get Affirmations sent directly to your phone via text message.",
   "icons": [
     {
       "src": "favicon.ico",
