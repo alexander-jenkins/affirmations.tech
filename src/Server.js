@@ -1,7 +1,6 @@
 // import depencies
 const express = require('express');
 const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
 const cors = require('cors');
 
 require('dotenv').config();
@@ -15,21 +14,16 @@ const client = require('twilio')(
 // set up the express app
 const app = express();
 app.use(cors());
-const port = process.env.REACT_APP_PORT || 3000;
+const port = process.env.REACT_APP_PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(pino);
 
-// test routes
-app.get('/api', (req, res) => {
-  res.json({ message: 'The api is alive!' });
-});
-
+// Test Route
 app.get('/', (req, res) => {
-  res.json({ message: 'The express server is alive!' });
+  res.send('Wassup hackUMBC 2021!');
 });
 
-// set up post route
+// API route to send the random affirmation
 app.post('/api/send-affirmation', (req, res) => {
   res.header('Content-Type', 'application/json');
   res.send(JSON.stringify({ message: 'The affirmation was sent!' }));
@@ -44,22 +38,7 @@ app.post('/api/send-affirmation', (req, res) => {
     });
 });
 
-app.get('/api/send-test', (req, res) => {
-  client.messages
-    .create({
-      from: process.env.REACT_APP_TWILIO_PHONE_NUMBER,
-      to: process.env.REACT_APP_TWILIO_TEST_NUMBER,
-      body: 'This is a test message from the server!',
-    })
-    .then(() => {
-      res.send(JSON.stringify({ success: true }));
-    })
-    .catch((err) => {
-      console.log(err);
-      res.send(JSON.stringify({ success: false }));
-    });
-});
-
+// Start the Express server
 app.listen(port, () => {
-  console.log(`Server is listening on port http://localhost:${port}`);
+  console.log(`Express is listening to http://localhost:${port}`);
 });
