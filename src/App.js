@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInputField from './PhoneInput';
+import logo from './affirmations.tech.64.png';
+import './App.css';
 
 // messages array
 const messages = [
@@ -34,7 +36,11 @@ function App() {
   return (
     <div className='App'>
       <Container>
-        <h2>Send an Affirmation</h2>
+        <div>
+          <img src={logo} style={{ display: 'inline-block' }} alt='logo' />
+          <h2 style={{ display: 'inline-block' }}>Send an Affirmation</h2>
+        </div>
+        <br />
         <MessageForm
           messages={messages}
           phoneNumber={phoneNumber}

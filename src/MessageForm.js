@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function MessageForm({messages}) {
+function MessageForm({ messages }) {
   const [phoneNumber, setPhoneNumber] = useState();
 
   const sendMessage = () => {
@@ -9,7 +9,6 @@ function MessageForm({messages}) {
     let message = messages[rID];
     console.log(`Sending message "${message}" to err`);
   };
-
 
   return (
     <form>
