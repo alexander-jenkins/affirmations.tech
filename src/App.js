@@ -52,10 +52,12 @@ function App() {
 }
 
 function MessageForm({ messages, phoneNumber, setPhoneNumber }) {
-  const sendMessage = (type) => {
+  const sendMessage = () => {
+
     // get message from array with idx from 0 - 19
     let rID = Math.floor(Math.random() * 20);
     let message = messages[rID];
+
 
     // send message
     console.log(`to: ${phoneNumber}, body: ${message}`);
@@ -78,7 +80,7 @@ function MessageForm({ messages, phoneNumber, setPhoneNumber }) {
         phoneNumber={phoneNumber}
         setPhoneNumber={setPhoneNumber}
       />
-      <button type={'submit'} onClick={sendMessage}>Send Affirmation</button>
+      <button type='button' onClick={sendMessage}>Send Affirmation</button>
     </form>
   );
 }
