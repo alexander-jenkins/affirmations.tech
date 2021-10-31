@@ -59,7 +59,7 @@ function MessageForm({ messages, phoneNumber, setPhoneNumber }) {
 
     // send message
     console.log(`to: ${phoneNumber}, body: ${message}`);
-    fetch('/api/send-affirmation', {
+    fetch('http://161.35.123.179:5000/api/send-affirmation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
