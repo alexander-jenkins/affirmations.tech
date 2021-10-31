@@ -78,7 +78,7 @@ function MessageForm({ messages, phoneNumber, setPhoneNumber }) {
         phoneNumber={phoneNumber}
         setPhoneNumber={setPhoneNumber}
       />
-      <button onClick={sendMessage}>Send Affirmation</button>
+      <button type={'submit'} onClick={sendMessage}>Send Affirmation</button>
     </form>
   );
 }
