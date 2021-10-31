@@ -16,6 +16,8 @@ const app = express();
 app.use(
   cors({
     origin: 'https://www.affirmations.tech',
+    meyhods: 'POST',
+    allowedHeaders: '*',
   })
 );
 const port = process.env.REACT_APP_EXPRESS_PORT || 5000;
