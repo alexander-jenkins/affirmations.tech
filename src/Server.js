@@ -35,8 +35,8 @@ app.post('/api/send-affirmation', (req, res) => {
     })
     .then((message) => {
       res.json({ message });
-      console.log(message);
     });
+  console.log('reveived a hit');
 });
 
 // Start the Express server
