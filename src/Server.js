@@ -16,7 +16,7 @@ const app = express();
 app.use(
   cors({
     origin: 'https://www.affirmations.tech',
-    meyhods: 'POST',
+    methods: 'POST,',
     allowedHeaders: '*',
   })
 );
