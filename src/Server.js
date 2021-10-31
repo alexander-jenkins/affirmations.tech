@@ -13,9 +13,10 @@ const client = require('twilio')(
 
 // set up the express app
 const app = express();
+const cors = require('cors');
 app.use(
   cors({
-    origin: '*',
+    origin: 'https://www.affirmations.tech',
   })
 );
 const port = process.env.REACT_APP_EXPRESS_PORT || 5000;
