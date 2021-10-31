@@ -31,15 +31,12 @@ const messages = [
 function App() {
   // declare state vars
   const [phoneNumber, setPhoneNumber] = useState();
+
   const sendMessage = () => {
-    // used for testing
-    console.log(`Sending a message to ${phoneNumber}`);
-
-    // get random id from 0 - 19
+    // get message from array with idx from 0 - 19
     let rID = Math.floor(Math.random() * 20);
-    console.log(messages[rID]);
-
-    // get document from the firestore database with the value form rID
+    let message = messages[rID];
+    console.log(`Sending message "${message}" to ${phoneNumber}`);
   };
 
   return (
