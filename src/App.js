@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 import 'react-phone-number-input/style.css';
 import PhoneInputField from './PhoneInput';
 
-// testing array of messages
+// messages array
 const messages = [
   'You are worth it!',
   'Take some time to reflect on all that you have accomplished today.',
@@ -29,29 +29,51 @@ const messages = [
 ];
 
 function App() {
-  // declare state vars
   const [phoneNumber, setPhoneNumber] = useState();
-
-  const sendMessage = () => {
-    // get message from array with idx from 0 - 19
-    let rID = Math.floor(Math.random() * 20);
-    let message = messages[rID];
-    console.log(`Sending message "${message}" to ${phoneNumber}`);
-  };
 
   return (
     <div className='App'>
       <Container>
         <h2>Send an Affirmation</h2>
-        <PhoneInputField
+        <MessageForm
+          messages={messages}
           phoneNumber={phoneNumber}
           setPhoneNumber={setPhoneNumber}
-        ></PhoneInputField>
-        <button onClick={sendMessage}>Send Affirmation</button>
+        />
       </Container>
-
-      {console.log(`Phone number is: ${phoneNumber}`)}
     </div>
+  );
+}
+
+function MessageForm({ messages, phoneNumber, setPhoneNumber }) {
+  const sendMessage = (type) => {
+    // get message from array with idx from 0 - 19
+    let rID = Math.floor(Math.random() * 20);
+    let message = messages[rID];
+
+    // send message
+    console.log(`to: ${phoneNumber}, body: ${message}`);
+    fetch('http://localhost:4000/api/send-affirmation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ to: `${phoneNumber}`, body: `${message}` }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  return (
+    <form>
+      <PhoneInputField
+        phoneNumber={phoneNumber}
+        setPhoneNumber={setPhoneNumber}
+      />
+      <button onClick={sendMessage}>Send Affirmation</button>
+    </form>
   );
 }
 
